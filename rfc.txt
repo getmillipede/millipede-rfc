@@ -1,0 +1,223 @@
+
+
+
+
+Network Working Group                                     Emmanuel Vadot
+Request For Comments: XXXX
+Category: Draft
+                                                               July 2015
+
+                             Millipede Format
+
+Abstract
+
+   This document defines the millipede format for representing and
+   exchanging millipede with friends.
+
+
+Table of Contents
+
+   1.  Introduction . . . . . . . . . . . . . . . . . . . . . . . . .  2
+   2.  Basic Grammar and Conventions . . . . . . . . . . . . . . . .   2
+   3.  Lexical Analysis of Millipede . . . . . . . . . . . . . . . .   3
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Vadot                           Draft                           [Page 1]
+
+RFC XXXX                    Millipede Format                   July 2015
+
+
+1.  Introduction
+
+    This document specifies the Millipede Format, a syntax for
+    sending millipede between users.
+
+    This document specifies a syntax only for millipede. In
+    particular, it makes no provision for the means oftransmission
+    of the millipede.
+    There are several existing protocol such as email, imessage or
+    even http that can take care of that.
+
+    In the context of millipede, a millipede is viewed as having an
+    body, a head and an optional comment.
+
+    This specification is intended as a definition of how the content
+    format is to be passed between users.
+
+2.  Basic Grammar and Conventions
+
+   The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+   "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
+   document are to be interpreted as described in [RFC2119].
+
+   All numeric values used in this memo are given in decimal notation.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Vadot                           Draft                           [Page 2]
+
+RFC XXXX                    Millipede Format                   July 2015
+
+3.  Lexical Analysis of Millipede
+
+3.1.  General Description
+
+   At the most basic level, a millipede is a series of characters.
+   A millipede that is conformant with this pecification is composed of
+   unicode characters in the UTF-8 representation.
+   For brevity, this document sometimes refers unicode characters as
+   simply "utf8 characters".
+
+   A millipede consists of an optional comment followed by a head and
+   a body.
+   A reversed millipede consists of a body, a head followed, optionaly,
+   by a comment.
+
+3.1.1.  Normal mode
+
+   The comment is a series of characters.
+   The head is a series of defined characters that follows the comment
+   section, if any, by a empty line.
+   The body is a series of defined and optional characters that follows
+   the head section.
+
+3.1.2.  Reverse mode
+
+   The body is a series of defined and optional characters.
+   The head is a series of defined characters that follows the body
+   section
+   The comment is a series of characters that follows the head section
+   by a empty line.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Vadot                           Draft                           [Page 2]
+
+RFC XXXX                    Millipede Format                   July 2015
+
+3.2.  The millipede head
+
+   Head section is a line beginning with some optional space characters,
+   followed by a opening mandible ("╚"), followed by the eyes section
+   ("⊙ ⊙"), terminated by a closing mandible ("╝").
+
+   head           =      padding openmandible eyes closemandible
+
+   openmandible   =      "╚"
+
+   closemandible  =      "╝"
+
+   eyes           =      eye space eye
+
+   eye            =      "⊙"
+
+   padding        =      *space
+
+   space          =      " "
+
+   In reverse mode the openmandible and closingmandible are inverted.
+
+3.3.  The millipede body
+
+   Body section are lines beginning with some optional space characters,
+   followed by a right leg ("╚═"), an opening body ("("), a body ("███"),
+   a closing body (")"), follow by a left leg ("═╝") and terminated by
+   a newline.
+
+   body           =      *bodypart
+
+   bodypart       =      *padding rightleg chest leftleg newline
+
+   rightleg       =      "╚" legpart
+
+   leftleg        =      "╝" legpart
+
+   legpart        =      "═"
+
+   chest          =      openchest 3*chestpart closechest
+
+   openchest      =      "("
+
+   chestpart      =      "█"
+
+   closechest     =      ")"
+
+   padding        =      " "
+
+   newline        =      "\n"
