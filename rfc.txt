@@ -67,7 +67,7 @@ RFC XXXX                    Millipede Format                   July 2015
     sending millipede between users.
 
     This document specifies a syntax only for millipede. In
-    particular, it makes no provision for the means oftransmission
+    particular, it makes no provision for the means of transmission
     of the millipede.
     There are several existing protocol such as email, imessage or
     even http that can take care of that.
@@ -120,7 +120,7 @@ RFC XXXX                    Millipede Format                   July 2015
 3.1.  General Description
 
    At the most basic level, a millipede is a series of characters.
-   A millipede that is conformant with this pecification is composed of
+   A millipede that is conformant with this specification is composed of
    unicode characters in the UTF-8 representation.
    For brevity, this document sometimes refers unicode characters as
    simply "utf8 characters".
